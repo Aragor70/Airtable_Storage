@@ -42,11 +42,11 @@ const App = () => {
 
             <table>
               <tr style={{ borderBottom: '1px solid #000' }}>
-                <td style={{ textAlign: 'center' }}>ID</td><td style={{ textAlign: 'center' }}>NAME</td><td style={{ textAlign: 'center' }}>CURRENT STATE</td><td style={{ textAlign: 'center' }}>TO ORDER</td>
+              <td style={{ textAlign: 'center' }}>INDEX</td><td style={{ textAlign: 'center' }}>ID</td><td style={{ textAlign: 'center' }}>NAME</td><td style={{ textAlign: 'center' }}>CURRENT STATE</td><td style={{ textAlign: 'center' }}>TO ORDER</td>
               </tr>
               
               {
-                tools.map((item) => <tr><td>{item.id}</td> <td>{item.name}</td><td style={{ textAlign: 'center' }}>{item.count}</td><td style={{ textAlign: 'center' }}>{item.toOrder}</td><td><img src={globe} onClick={e => window.open(item.url, "_blank") } /></td></tr>)
+                tools.map((item, index) => <tr key={item.id}><td style={{ textAlign: 'center' }}>{index + 1}.</td><td>{item.id}</td> <td>{item.name}</td><td style={{ textAlign: 'center' }}>{item.count}</td><td style={{ textAlign: 'center' }}>{item.toOrder}</td><td><img src={globe} onClick={e => window.open(item.url, "_blank") } /></td></tr>)
               }
             
             </table>
