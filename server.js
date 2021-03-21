@@ -1,0 +1,15 @@
+require ('dotenv').config({ path: 'config/config.env' })
+const express = require('express')
+const app = express()
+
+app.use(express.json())
+
+app.use('/api/orders', require('./routes/api/orders'))
+
+
+
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
+
+
