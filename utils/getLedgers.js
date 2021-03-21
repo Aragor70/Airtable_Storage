@@ -10,7 +10,7 @@ const getLedgers = async (trigger) => {
     let ledgers = []
 
     for (let i = 0; i < records.length; i++) {
-
+        
         ledgers = [...ledgers, { tag: records[i].get('Asset Tag').text, type: records[i].get('Tool Type')[0], status: records[i].get('Status') }]
 
     }

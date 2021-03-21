@@ -1,0 +1,32 @@
+
+* {
+    box-sizing: border-box;
+}
+
+
+h1
+{
+    font-size: 23px;
+}
+hr
+{
+    margin-top: 0;
+
+}
+tr
+{
+    width: 100%;
+    height: auto;
+}
+
+td
+{
+    text-align: left;
+    padding: 7.5px;
+}
+
+td > img
+{
+    height: 20px;
+    cursor: pointer;
+}

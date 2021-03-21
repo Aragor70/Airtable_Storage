@@ -9,37 +9,50 @@ const getLedgers = require('../../utils/getLedgers')
 
 router.get('/', async(req, res) => {
 
-    let tools = await getTools('Tools')
-
-    const ledgers = await getLedgers('Ledger')
-
-    let lost = []
+    try {
 
 
-    for (let i = 0; i < ledgers.length; i++) {
 
-        if (ledgers[i].status !== 'Available') {
+        let tools = await getTools('Tools')
 
-            tools = tools.map((element) => element.id === ledgers[i].type ? {...element, count: element.count - 1} : element)
+        const ledgers = await getLedgers('Ledger')
 
-            
-            lost = [...lost, ledgers[i].type]
-        }
-    }
+        let lost = []
+        
 
-    let orderList = []
+        for (let i = 0; i < ledgers.length; i++) {
 
-    for (let i = 0; i < tools.length; i++) {
+            if (ledgers[i].status !== 'Available') {
+                
+                tools = tools.map((element) => element.id === ledgers[i].type ? {...element, count: element.count - 1} : element)
 
-        if (tools[i].count < 3) {
-            orderList = [...orderList, { ...tools[i], toOrder: 3 - tools[i].count }]
+                
+                lost = [...lost, ledgers[i].type]
+            }
         }
 
-    }
+        let orderList = []
 
+        for (let i = 0; i < tools.length; i++) {
+
+            if (tools[i].count < 3) {
+                
+                orderList = [...orderList, { ...tools[i], toOrder: 3 - tools[i].count }]
+            }
+
+        }
+
+        
+        
+        return res.json({ success: true, orderList });
+
+
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error.')
+    }
 
     
-    return res.json({ success: true, orderList });
 
 });
 

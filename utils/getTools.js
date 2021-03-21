@@ -10,7 +10,7 @@ const getTools = async (trigger) => {
 
     for (let i = 0; i < records.length; i++) {
         
-        tools = [...tools, { id: records[i].id, name: records[i].get('Tool Name'), count: records[i].get('Restock Count') }]
+        tools = [...tools, { id: records[i].id, name: records[i].get('Tool Name'), count: records[i].get('Restock Count'), url: records[i].get('Procurement Link') }]
 
     }
     return tools;
