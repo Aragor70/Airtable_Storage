@@ -36,9 +36,6 @@ const App = () => {
 
             <p>We have {tools.length} items on the list to order</p>
 
-            
-
-
 
             <table>
               <tr style={{ borderBottom: '1px solid #000' }}>
